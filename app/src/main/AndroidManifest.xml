@@ -10,7 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Services1">
 
-        <service android:name=".AudioService" />
+        <service
+            android:name=".AudioService"
+            android:exported="true"
+            android:externalService="true">
+            <intent-filter>
+                <action android:name="in.bitcode.media.service.AUDIO" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name=".MainActivity"

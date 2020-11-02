@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 public class AudioService extends Service {
 
     private MediaPlayer mMediaPlayer;
+    public static final String ACTION_AUDIO = "in.bitcode.media.service.AUDIO";
 
     @Override
     public void onCreate() {
@@ -27,19 +28,21 @@ public class AudioService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         mt("onStartCommand " + startId);
 
-        mMediaPlayer = MediaPlayer.create(this, R.raw.dil_chahata_hai);
+        //Thread.currentThread().getName();
+
+        //mMediaPlayer = MediaPlayer.create(this, R.raw.dil_chahata_hai);
         /*try {
             mMediaPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        /*mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 mMediaPlayer.setVolume(50,50);
                 mediaPlayer.start();
             }
-        });
+        });*/
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -48,8 +51,8 @@ public class AudioService extends Service {
     public void onDestroy() {
         mt("onDestroy");
         super.onDestroy();
-        mMediaPlayer.release();
-        mMediaPlayer = null;
+        /*mMediaPlayer.release();
+        mMediaPlayer = null;*/
     }
 
     private void mt(String text) {

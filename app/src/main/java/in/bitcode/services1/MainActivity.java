@@ -2,7 +2,9 @@ package in.bitcode.services1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         init();
     }
@@ -50,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
     private class BtnStartClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(MainActivity.this, AudioService.class);
+            //Intent intent = new Intent(MainActivity.this, AudioService.class);
+            Intent intent = new Intent(AudioService.ACTION_AUDIO);
+            intent.setPackage("in.bitcode.services1");
             startService(intent);
         }
     }
